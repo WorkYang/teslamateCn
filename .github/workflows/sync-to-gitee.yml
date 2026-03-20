@@ -1,0 +1,21 @@
+name: Sync to Gitee
+
+on:
+  push:
+    branches: [ "main", "develop" ]  # 根据你实际主分支名称调整
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 同步完整历史，建议保留
+
+      - name: Sync to Gitee
+        uses: abersheeran/sync-gitee-mirror@v1-beta
+        with:
+          repository: WorkYang/teslamateCn   # 注意：这里写的是 GitHub 仓库名
+          username: ${{ secrets.GITEE_USERNAME }}
+          password: ${{ secrets.GITEE_PASSWORD }}

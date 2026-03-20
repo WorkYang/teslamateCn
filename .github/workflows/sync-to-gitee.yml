@@ -13,9 +13,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure Gitee remote
+        run: |
+          git remote remove origin
+          git remote add gitee https://hnlyyp:${{ secrets.GITEE_PASSWORD }}@gitee.com/hnlyyp/teslamateCn.git
+
       - name: Sync to Gitee
-        uses: abersheeran/sync-gitee-mirror@v1-beta
-        with:
-          repository: WorkYang/teslamateCn
-          username: ${{ secrets.GITEE_USERNAME }}
-          password: ${{ secrets.GITEE_PASSWORD }}
+        run: |
+          git push gitee main develop

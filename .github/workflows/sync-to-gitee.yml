@@ -16,7 +16,8 @@ jobs:
       - name: Configure Gitee remote
         run: |
           git remote remove origin
-          git remote add gitee https://hnlyyp:${{ secrets.GITEE_PASSWORD }}@gitee.com/hnlyyp/teslamateCn.git
+          git remote add gitee 'https://hnlyyp:${{ secrets.GITEE_PASSWORD }}@gitee.com/hnlyyp/teslamateCn.git'
+
 
       - name: Sync to Gitee
         run: |
